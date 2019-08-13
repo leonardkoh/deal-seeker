@@ -1,5 +1,5 @@
-##run server first
-##then run from client directory
+## Run server first <br>
+## Then run from client directory
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

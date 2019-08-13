@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var ozbd = require('../functions');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  console.log('Response')
+  console.log(ozbd);  
+  res.send(ozbd);
 });
 
 module.exports = router;

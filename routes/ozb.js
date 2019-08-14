@@ -8,7 +8,7 @@ let dataArr = [];
 
 function scrapeOzb(url) {
   request.get(url, (err, res, html) => {
-    if(err) {console.log(`There's an error with url --> ${url}`)}
+    if(err) {console.log(`There's an error reaching -> ${url}`)}
   
     else {
       let $ = cheerio.load(html);

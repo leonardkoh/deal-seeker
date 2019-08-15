@@ -39,7 +39,7 @@ function scrapeOzb(url) {
 }
 scrapeOzb(URLS[0]);
 
-/* Get Ozb page. */
+/* Get Ozb page */
 router.get('/', function(req, res, next) {
   res.send(dataArr);
 });

@@ -4,22 +4,27 @@ class ReactDetailsButton extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showDetails: false }
+    this.state = { showDetails: false, 
+      nodeData: []
+    };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(e) {
-    this.setState({showDetails: true})
-    if(this.state.showDetails)
-      console.log(`props: ${this.props.LinkInfo}`);
+    // this.setState({showDetails: true})
+    // if(this.state.showDetails)
+    //   console.log(`props: ${this.props.LinkInfo}`);
+    fetch('/ozbNode')
+    .then(res => res.json())
+    .then(nd => this.setState({ nodeData: nd }))
   }
 
   render() {
     if(this.state.showDetails)
     return (<div>{this.props.LinkInfo}</div>)
     else
-    return( <button className="btn btn-outline-primary btn-sm" value={this.props.LinkInfo} onClick={this.handleClick}>MORE DETAILS</button>);
+    return( <button className="btn btn-outline-primary btn-sm" value={this.props.LinkInfo} onClick={this.handleClick}>SEE MORE</button>);
   }
 }
 
@@ -29,8 +34,6 @@ class App extends React.Component {
 
     this.state = { data: [],
     };
-
-    // this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
@@ -41,14 +44,14 @@ class App extends React.Component {
 
   render() {
     return (
-    <div className="App">this.props.showDetails
-      <h1>Data</h1>
+    <div className="App">
+      <h1>Ozbargain Deals</h1>
       <ul>
-        {this.state.data.map(data =>
-          <li>
+        {this.state.data.map((data,i) =>
+          <li key={i}>
             <h3>{data.title}</h3>
-            <p className="font-italic">{data.submitDetail}</p>
-            <ReactDetailsButton LinkInfo={data.link}/>
+            <h6 className="font-italic">{data.submitDetail}</h6>
+                <ReactDetailsButton LinkInfo={data.link}/>
             <br/>
           </li>
         )}

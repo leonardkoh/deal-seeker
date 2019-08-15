@@ -10,14 +10,16 @@ class ReactDetailsButton extends React.Component {
   }
 
   handleClick(e) {
-    console.log('button clicked');
     this.setState({showDetails: true})
     if(this.state.showDetails)
       console.log(`props: ${this.props.LinkInfo}`);
   }
 
   render() {
-    return( <button className="btn btn-outline-secondary btn-sm" value={true} onClick={this.handleClick}>DETAILS BUTTON</button>);
+    if(this.state.showDetails)
+    return (<div>{this.props.LinkInfo}</div>)
+    else
+    return( <button className="btn btn-outline-primary btn-sm" value={this.props.LinkInfo} onClick={this.handleClick}>MORE DETAILS</button>);
   }
 }
 
@@ -46,10 +48,8 @@ class App extends React.Component {
           <li>
             <h3>{data.title}</h3>
             <p className="font-italic">{data.submitDetail}</p>
-            <a href={data.link} className="btn btn-outline-primary btn-sm" value="DETAILS">DETAILS</a>
-            <button className="btn btn-outline-secondary btn-sm" value={true} onClick={this.onClick}>TOGGLE</button>
-            <br/>
             <ReactDetailsButton LinkInfo={data.link}/>
+            <br/>
           </li>
         )}
       </ul> 

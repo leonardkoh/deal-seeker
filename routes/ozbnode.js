@@ -36,7 +36,7 @@ function scrapeNode() {
 //       dataArr.forEach(e => { e.title = $(e.title).text().trim(); })
 //     }
 //   });
-    }})}
+}})}
 
 scrapeNode();
 

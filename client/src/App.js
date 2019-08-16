@@ -5,7 +5,7 @@ class ReactDetailsButton extends React.Component {
     super(props);
 
     this.state = { showDetails: false, 
-      nodeData: []
+      nodeData: ''
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -15,9 +15,12 @@ class ReactDetailsButton extends React.Component {
     // this.setState({showDetails: true})
     // if(this.state.showDetails)
     //   console.log(`props: ${this.props.LinkInfo}`);
-    fetch('/ozbNode')
+    fetch('/ozbnode')
     .then(res => res.json())
     .then(nd => this.setState({ nodeData: nd }))
+    // console.log(`Button Value: ${this.props.LinkInfo}`);
+    console.log(this.state.nodeData);
+    // this.setState(fetch('/ozbnode'));
   }
 
   render() {

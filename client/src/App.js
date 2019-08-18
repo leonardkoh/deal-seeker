@@ -26,11 +26,9 @@ class ReactDetailsButton extends React.Component {
 
   render() {
     if(this.state.showDetails)
-      return (
-        <div>
-          {this.state.nodeData.map(e => <div>{e}</div>)}
-        </div>
-      );
+      return (<div> {this.state.nodeData.map(e => 
+        this.state.nodeData.indexOf(e) == 0 ? <h3><b>{e}</b></h3> : <div>{e}</div> //apply styling to coupon (index 0) to be refactored
+      )} </div>);
     else
       return (<button className="btn btn-outline-primary btn-sm" value={this.props.LinkInfo} onClick={this.handleClick}>SEE MORE</button>);
   }

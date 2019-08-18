@@ -4,7 +4,7 @@ const request = require('request');
 const cheerio = require('cheerio');
 
 let dataArr = []; 
-TEST_URL = 'https://www.ozbargain.com.au/node/477203';
+TEST_URL = 'https://www.ozbargain.com.au/node/477738';
 
 function scrapeNode() {
   request.get(TEST_URL, (err, res, html) => {
@@ -12,14 +12,16 @@ function scrapeNode() {
   
     else {
       let $ = cheerio.load(html);
-      let nodes = [], objectNodes = []; 
-      dataArr[0] = $('ul div.content').text();
-      // dataArr = [1,2,3];
-}})}
+      dataArr = $('.node div.content').text().split('\n');
+      couponCode = $('.node div.n-right div.content div.couponcode').text();
+      dataArr.unshift(couponCode); // coupon code set as index 0
+    }
+  })
+};
 
 scrapeNode();
 
-/* Ozb node data */
+/* Get Ozb node data */
 router.get('/', function(req, res, next) {
   res.send(dataArr);
 });

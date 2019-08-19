@@ -7,27 +7,35 @@ class ReactDetailsButton extends React.Component {
     super(props);
 
     this.state = { showDetails: false, 
-      nodeData: ''
+      nodeData: []
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    fetch('/ozbnode')
-    .then(res => res.json())
-    .then(nd => this.setState({ nodeData: nd }));
+    // fetch('/ozbnode')
+    // .then(res => res.json())
+    // .then(nd => this.setState({ nodeData: nd }));
+    // console.log(this.props.LinkInfo) 
   }
   
   handleClick() {
     this.setState({showDetails: true});
-    console.log(this.state.nodeData);
+
+    var data = { LinkInfo: this.props.LinkInfo }
+
+    fetch('/ozbnode', {method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({data})})
+      .then(res => res.json())
+      .then(nd => this.setState({ nodeData: nd }));
   }
 
   render() {
     if(this.state.showDetails)
       return (<div> {this.state.nodeData.map(e => 
-        this.state.nodeData.indexOf(e) == 0 ? <h3><b>{e}</b></h3> : <div>{e}</div> //apply styling to coupon (index 0) to be refactored
+        this.state.nodeData.indexOf(e) === 0 ? <h3><b>{e}</b></h3> : <h6>{e}</h6> //apply styling to coupon (index 0) to be refactored
       )} </div>);
     else
       return (<button className="btn btn-outline-primary btn-sm" value={this.props.LinkInfo} onClick={this.handleClick}>SEE MORE</button>);

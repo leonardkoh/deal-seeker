@@ -37,6 +37,7 @@ function scrapeOzb(url) {
     }
   });
 }
+
 scrapeOzb(URLS[0]);
 
 /* Get Ozb page */

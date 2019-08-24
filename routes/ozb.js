@@ -22,7 +22,7 @@ function scrapeOzb(url) {
           title: e.replace('node','h2#title'),
           submitDetail: $(e.replace('node','h2#title')).next().text(),
           link: e.replace('node',`https://www.ozbargain.com.au/node/`),
-          // picture: $('.foxshot-container a img')
+          image: $(`#${e} .foxshot-container img`).attr('src')
         };
       });
         
@@ -35,8 +35,6 @@ function scrapeOzb(url) {
 
       dataArr = [...objectNodes];
       dataArr.forEach(e => { e.title = $(e.title).text().trim(); })
-
-      // dataArr.map(d => {console.log(d.picture)});
     }
   });
 }

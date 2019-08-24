@@ -63,7 +63,7 @@ class App extends React.Component {
             <li key={i}>
               <div className="row">
                 <div className="col-xs">
-                  <img src={imagePH} alt="deal-node" height="50vw" width="50vw"/>
+                  <img src={data.image} alt="deal-node" height="100vw" width="150vw"/>
                 </div>
                 <div className="col">
                   <h3>{data.title}</h3>

@@ -6,8 +6,8 @@ class ReactDetailsButton extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showDetails: false, 
-      nodeData: []
+    this.state = { showDetails: false,
+      nodeData: ['CLIENT']
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -18,25 +18,31 @@ class ReactDetailsButton extends React.Component {
     // .then(res => res.json())
     // .then(nd => this.setState({ nodeData: nd }));
     // console.log(this.props.LinkInfo) 
+    
+    // this.setState({nodeLink: this.props.LinkInfo});
   }
   
-  handleClick() {
+  handleClick(e) {
     this.setState({showDetails: true});
 
-    var data = { LinkInfo: this.props.LinkInfo }
+    // console.log(e.target.value);
 
-    fetch('/ozbnode', {method: 'POST',
+    fetch('/ozbnode', { method: 'POST',
       headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({data})})
+      body: JSON.stringify({link: e.target.value})})
       .then(res => res.json())
-      .then(nd => this.setState({ nodeData: nd }));
+      .then(data => this.setState({ nodeData: data }));
+
+      console.log(this.state.nodeData);
   }
 
   render() {
     if(this.state.showDetails)
-      return (<div> {this.state.nodeData.map(e => 
+      return (
+      <div> {this.state.nodeData.map(e => 
         this.state.nodeData.indexOf(e) === 0 ? <h3><b>{e}</b></h3> : <h6>{e}</h6> //apply styling to coupon (index 0) to be refactored
-      )} </div>);
+      )} </div> )
+      // <div>{this.state.nodeData[0]}</div>);
     else
       return (<button className="btn btn-outline-primary btn-sm" value={this.props.LinkInfo} onClick={this.handleClick}>SEE MORE</button>);
   }
@@ -60,7 +66,7 @@ class App extends React.Component {
     return (
     <div className="app">
       <HeaderBar />
-      <h1>Ozbargain Deals</h1>
+      {/* <h1>Ozbargain Deals</h1> */}
       <ul>
         {this.state.data.map((data,i) =>
             <li key={i}>

@@ -1,6 +1,7 @@
 import React from 'react';
-import imagePH from './ImagePH.png';
-import HeaderBar from './HeaderBar'
+import Headerbar from './Headerbar';
+import Footerbar from './Footerbar';
+
 
 class ReactDetailsButton extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class ReactDetailsButton extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.renderData = this.renderData.bind(this);
   }
   
   handleClick() {
@@ -23,17 +25,24 @@ class ReactDetailsButton extends React.Component {
       .then(data => this.setState({ nodeData: data }));
   }
 
-  render() {
-    if(this.state.showDetails && this.state.nodeData[0]!=='') // if has coupon code
-      return (
-      <div> {this.state.nodeData.map(e => 
-        this.state.nodeData.indexOf(e) === 0 ? <h3><b>{e}</b></h3> : <h6>{e}</h6> //apply styling to coupon
-      )} </div> )
-    else if(this.state.showDetails)
-    return (
-    <div> {this.state.nodeData.map(e => 
+  renderData(coupon) {
+    if(coupon==1) {
+      // let arr2 = [...this.state.nodeData];
+      // this.setState({nodeData: arr2})
+    }
+
+    return ( <div> {this.state.nodeData.map(e => 
       this.state.nodeData.indexOf(e) === 0 ? <h3><b>{e}</b></h3> : <h6>{e}</h6> //apply styling to coupon
-    )} </div>) 
+    )} </div> )
+  }
+
+  render() {
+    if(this.state.showDetails && this.state.nodeData[0]!=='') //if has coupon code
+      return (this.renderData(1));
+
+    else if(this.state.showDetails) //if no coupon
+      return (this.renderData(0));
+    
     else
       return (<button className="btn btn-outline-primary btn-sm" onClick={this.handleClick}>SEE MORE</button>);
   }
@@ -43,8 +52,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { data: [],
-    };
+    this.state = { data: [] };
   }
 
   componentDidMount() {
@@ -55,9 +63,9 @@ class App extends React.Component {
 
   render() {
     return (
-    <div className="app">
-      <HeaderBar />
-      <h1>Ozbargain Deals</h1>
+    <div className="app container">
+      <Headerbar />
+      <h1>Ozbargain</h1>
       <ul>
         {this.state.data.map((data,i) =>
             <li key={i}>
@@ -75,6 +83,7 @@ class App extends React.Component {
           </li>
         )}
       </ul>
+      <Footerbar />
     </div>
   )}
 }

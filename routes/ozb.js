@@ -7,7 +7,7 @@ var URLS = require('../urls')
 let dataArr = []; 
 
 function scrapeOzb(url) {
-  request.get(url, (err, res, html) => {
+  request.get(url, (err, r, html) => {
     if(err) {console.log(`There's an error reaching -> ${url}`)}
   
     else {
@@ -22,6 +22,7 @@ function scrapeOzb(url) {
           title: e.replace('node','h2#title'),
           submitDetail: $(e.replace('node','h2#title')).next().text(),
           link: e.replace('node',`https://www.ozbargain.com.au/node/`),
+          // picture: $('.foxshot-container a img')
         };
       });
         
@@ -34,6 +35,8 @@ function scrapeOzb(url) {
 
       dataArr = [...objectNodes];
       dataArr.forEach(e => { e.title = $(e.title).text().trim(); })
+
+      // dataArr.map(d => {console.log(d.picture)});
     }
   });
 }

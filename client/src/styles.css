@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway&display=swap');
 
-/* $color-blue: #3875b9; */
-
 body {
   font-family: 'Raleway', sans-serif;
   width: 80%;
@@ -33,7 +31,7 @@ ul {
 }
 
 li {
-  padding-bottom: 2%;
+  padding-bottom: 1%;
 }
 
 .btn-outline-primary {
@@ -41,16 +39,12 @@ li {
   border-color: #1377cf;
 }
 .btn-outline-primary:hover {
-  /* background: #3875b9; */
   background: #1377cf;
   
 }
 
 .bg-primary {
   color: white;  
-  /* background: #1386cf !important; */
-  /* background: #3875b9 !important; */
-
   background: #1377cf !important;
 }
 

@@ -7,44 +7,35 @@ class ReactDetailsButton extends React.Component {
     super(props);
 
     this.state = { showDetails: false,
-      nodeData: ['CLIENT']
+      nodeData: []
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
-
-  componentDidMount() {
-    // fetch('/ozbnode')
-    // .then(res => res.json())
-    // .then(nd => this.setState({ nodeData: nd }));
-    // console.log(this.props.LinkInfo) 
-    
-    // this.setState({nodeLink: this.props.LinkInfo});
-  }
   
-  handleClick(e) {
+  handleClick() {
     this.setState({showDetails: true});
-
-    // console.log(e.target.value);
 
     fetch('/ozbnode', { method: 'POST',
       headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({link: e.target.value})})
+      body: JSON.stringify({link: this.props.LinkInfo})})
       .then(res => res.json())
       .then(data => this.setState({ nodeData: data }));
-
-      console.log(this.state.nodeData);
   }
 
   render() {
-    if(this.state.showDetails)
+    if(this.state.showDetails && this.state.nodeData[0]!=='') // if has coupon code
       return (
       <div> {this.state.nodeData.map(e => 
-        this.state.nodeData.indexOf(e) === 0 ? <h3><b>{e}</b></h3> : <h6>{e}</h6> //apply styling to coupon (index 0) to be refactored
+        this.state.nodeData.indexOf(e) === 0 ? <h3><b>{e}</b></h3> : <h6>{e}</h6> //apply styling to coupon
       )} </div> )
-      // <div>{this.state.nodeData[0]}</div>);
+    else if(this.state.showDetails)
+    return (
+    <div> {this.state.nodeData.map(e => 
+      this.state.nodeData.indexOf(e) === 0 ? <h3><b>{e}</b></h3> : <h6>{e}</h6> //apply styling to coupon
+    )} </div>) 
     else
-      return (<button className="btn btn-outline-primary btn-sm" value={this.props.LinkInfo} onClick={this.handleClick}>SEE MORE</button>);
+      return (<button className="btn btn-outline-primary btn-sm" onClick={this.handleClick}>SEE MORE</button>);
   }
 }
 
@@ -66,7 +57,7 @@ class App extends React.Component {
     return (
     <div className="app">
       <HeaderBar />
-      {/* <h1>Ozbargain Deals</h1> */}
+      <h1>Ozbargain Deals</h1>
       <ul>
         {this.state.data.map((data,i) =>
             <li key={i}>

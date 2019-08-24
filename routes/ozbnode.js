@@ -8,19 +8,17 @@ let dataArr = ['SERVER'];
 router.post('/', async function(req, res, next) {
   let url = req.body.link;
 
-  await request.get(url, (err, res, html) => {
+  await request.get(url, (err, r, html) => {
     if(err) {console.log(`There's an error reaching the node -> ${url}`)}
-    
+      
     else {
       let $ = cheerio.load(html);
       dataArr = $('.node div.content').text().split('\n');
       couponCode = $('.node div.n-right div.content div.couponcode').text();
       dataArr.unshift(couponCode); // coupon code set as index 0
+      res.send(dataArr);
     }
-  })
-    
-  res.send(dataArr);
-  }
+  })}
 );
 
 module.exports = router;

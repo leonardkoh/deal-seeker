@@ -28,7 +28,7 @@ class ReactDetailsButton extends React.Component {
   }
 
   renderData(coupon) {
-    if(coupon==1) {
+    if(coupon===1) {
       // let arr2 = [...this.state.nodeData];
       // this.setState({nodeData: arr2})
     }

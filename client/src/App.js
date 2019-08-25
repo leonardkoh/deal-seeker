@@ -1,6 +1,8 @@
 import React from 'react';
 import Headerbar from './Headerbar';
 import Footerbar from './Footerbar';
+import Pagination from './Pagination';
+
 
 
 class ReactDetailsButton extends React.Component {
@@ -63,19 +65,19 @@ class App extends React.Component {
 
   render() {
     return (
-    <div className="app container">
+    <div className="app">
       <Headerbar />
-      <h1>Ozbargain</h1>
+      <h1 className="p-4">Ozbargain</h1>
       <ul>
         {this.state.data.map((data,i) =>
-            <li key={i}>
+            <li key={i} className="p-1">
               <div className="row">
-                <div className="col-xs">
+                <div className="col-xs mx-auto">
                   <img src={data.image} alt="deal-node" height="100vw" width="150vw"/>
                 </div>
                 <div className="col">
                   <h3>{data.title}</h3>
-                  <h6 className="font-italic">{data.submitDetail}</h6>
+                  <h6>{data.submitDetail}</h6>
                   <ReactDetailsButton LinkInfo={data.link}/>
                 </div>
               </div>
@@ -83,6 +85,7 @@ class App extends React.Component {
           </li>
         )}
       </ul>
+      <Pagination PageNumber={1}/>
       <Footerbar />
     </div>
   )}

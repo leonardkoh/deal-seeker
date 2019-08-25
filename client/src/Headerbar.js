@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Headerbar() {
+const Headerbar = () => {
     return (
         // re-style if mobile just drop down of page
         <nav className="navbar navbar-expand-md navbar-dark bg-primary">
@@ -28,3 +28,5 @@ export default function Headerbar() {
         </nav>
     );
 }
+
+export default Headerbar;

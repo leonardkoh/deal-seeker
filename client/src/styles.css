@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway|Open+Sans&display=swap');
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   width: 80%;
   margin: auto;
 }
@@ -11,10 +11,8 @@ body {
 }
 
 h1 {
-  font-family: 'Montserrat', sans-serif;
   text-align: center;
   font-size: 2rem;
-  padding: 2% 0 2% 0;
 }
 
 h3 {
@@ -22,15 +20,12 @@ h3 {
 }
 
 h6 {
+  font-family: 'Raleway', sans-serif;
   font-size: 0.8rem;
 }
 
 ul {
   list-style-type: none;
-}
-
-li {
-  padding-bottom: 1%;
 }
 
 .btn-outline-primary {

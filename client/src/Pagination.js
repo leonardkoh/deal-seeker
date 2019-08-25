@@ -17,15 +17,15 @@ class Pagination extends React.Component {
         return (
             <nav aria-label="page-selector">
                 <ul className="pagination justify-content-center">
-                <li className="page-item active" id="Page1">
-                    <button className="page-link" value={1} onClick={this.handleClick}>1</button>
-                </li>
-                <li className="page-item" id="Page2">
-                    <button className="page-link" value={2} onClick={this.handleClick}>2</button>
-                </li>
-                <li className="page-item" id="Page3">
-                    <button className="page-link" value={3} onClick={this.handleClick}>3</button>
-                </li>
+                    <li className="page-item active" id="Page1">
+                        <button className="page-link" value={1} onClick={this.handleClick}>1</button>
+                    </li>
+                    <li className="page-item" id="Page2">
+                        <button className="page-link" value={2} onClick={this.handleClick}>2</button>
+                    </li>
+                    <li className="page-item" id="Page3">
+                        <button className="page-link" value={3} onClick={this.handleClick}>3</button>
+                    </li>
                 </ul>
             </nav>
         )

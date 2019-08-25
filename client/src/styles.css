@@ -7,7 +7,8 @@ body {
 }
 
 .app {
-  background: #ebf1f8;
+  /* background: #ebf1f8; */
+  background: #f1f1f1;
 }
 
 h1 {
@@ -26,9 +27,19 @@ h6 {
 
 ul {
   list-style-type: none;
+  padding-left: 0px;
 }
 
-.btn-outline-primary {
+.col-xs {
+  padding-right: 2vw;
+}
+
+.row {
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+/* .btn-outline-primary {
   color: #1377cf;
   border-color: #1377cf;
 }
@@ -41,8 +52,4 @@ ul {
 .bg-primary {
   color: white;  
   background: #1377cf !important;
-}
-
-.col-xs {
-  padding-right: 2vw;
-}
+} */

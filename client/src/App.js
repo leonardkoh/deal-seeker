@@ -3,8 +3,6 @@ import Headerbar from './Headerbar';
 import Footerbar from './Footerbar';
 import Pagination from './Pagination';
 
-
-
 class ReactDetailsButton extends React.Component {
   constructor(props) {
     super(props);
@@ -46,7 +44,7 @@ class ReactDetailsButton extends React.Component {
       return (this.renderData(0));
     
     else
-      return (<button className="btn btn-outline-primary btn-sm" onClick={this.handleClick}>SEE MORE</button>);
+      return (<button className="btn btn-outline-dark btn-sm" onClick={this.handleClick}>SEE MORE</button>);
   }
 }
 
@@ -76,7 +74,8 @@ class App extends React.Component {
                   <img src={data.image} alt="deal-node" height="100vw" width="150vw"/>
                 </div>
                 <div className="col">
-                  <h3>{data.title}</h3>
+                  {/* <h3><a rel="nofollow" href={data.link.replace('node','goto')}>{data.title}</a></h3> */}
+                  <h3><a rel="nofollow" target="_blank" href={data.link}>{data.title}</a></h3>
                   <h6>{data.submitDetail}</h6>
                   <ReactDetailsButton LinkInfo={data.link}/>
                 </div>
@@ -85,7 +84,7 @@ class App extends React.Component {
           </li>
         )}
       </ul>
-      <Pagination PageNumber={1}/>
+      <Pagination />
       <Footerbar />
     </div>
   )}

@@ -32,7 +32,7 @@ class ReactDetailsButton extends React.Component {
     }
 
     return ( <div> {this.state.nodeData.map(e => 
-      this.state.nodeData.indexOf(e) === 0 ? <h3><b>{e}</b></h3> : <h6>{e}</h6> //apply styling to coupon
+      this.state.nodeData.indexOf(e) === 0 ? <h3><b>{e}</b></h3> : <p>{e}</p> //apply styling to coupon
     )} </div> )
   }
 
@@ -65,7 +65,7 @@ class App extends React.Component {
     return (
     <div className="app">
       <Headerbar />
-      <h1 className="p-4">Ozbargain</h1>
+      {/* <h1 className="p-4">Ozbargain</h1> */}
       <ul>
         {this.state.data.map((data,i) =>
             <li key={i} className="p-1">

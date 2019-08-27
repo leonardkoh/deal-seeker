@@ -2,13 +2,13 @@ var express = require('express');
 var router = express.Router();
 const request = require('request');
 const cheerio = require('cheerio');
-var URLS = require('../urls')
+var URLS = require('../urls');
 
 let dataArr = []; 
 
 function scrapeOzb(url) {
   request.get(url, (err, r, html) => {
-    if(err) {console.log(`There's an error reaching -> ${url}`)}
+    if(err) { console.log(`There's an error reaching -> ${url}`) }
   
     else {
       let $ = cheerio.load(html);

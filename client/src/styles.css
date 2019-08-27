@@ -8,7 +8,7 @@ body {
 
 .app {
   /* background: #ebf1f8; */
-  background: #f1f1f1;
+  background: #f6f6f6;
 }
 
 h1 {
@@ -25,6 +25,11 @@ h6 {
   font-size: 0.8rem;
 }
 
+p {
+  line-height: 1.3em;
+  margin-bottom: 0.5em;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0px;
@@ -39,7 +44,7 @@ ul {
   margin-right: 2vw;
 }
 
-/* .btn-outline-primary {
+.btn-outline-primary {
   color: #1377cf;
   border-color: #1377cf;
 }
@@ -52,4 +57,4 @@ ul {
 .bg-primary {
   color: white;  
   background: #1377cf !important;
-} */
+}

@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var ozbRouter = require('./routes/ozb');
 var ozbNodeRouter = require('./routes/ozbnode');
+var ffeeds = require('./routes/ffeeds');
 
 var app = express();
 
@@ -23,6 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/ozb', ozbRouter);
 app.use('/ozbnode', ozbNodeRouter);
+app.use('/ffeeds', ffeeds);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

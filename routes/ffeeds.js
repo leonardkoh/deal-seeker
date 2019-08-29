@@ -12,18 +12,14 @@ function scrapeFfeeds(url) {
   
     else {
         let $ = cheerio.load(html);
-        let nodes = [], objectNodes = []; 
+        let objectNodes = []; 
         
+        let titles = $('.post-title').text();
+        let nodes = titles.split("DEAL:");
         
-        // console.log($('.post-title').text());
-        $('h2.post-title').map((i,e) => { nodes.push(e); });
-        // $('.post-title').map((i,e) => {nodes.push(e)});
         console.log(`Node Array length: ${nodes.length}`);
-        // console.log(`Node content: ${nodes}`);
         nodes.forEach(e => {console.log(`${e}`)})
         
-        //   $('div.node').map((i,e) => { nodes.push(e.attribs.id); });
-        //   nodes = nodes.filter(e => { return e!==undefined ? true:false; });
         
       nodes.forEach((e,i) => { 
         objectNodes[i] = {
@@ -33,10 +29,9 @@ function scrapeFfeeds(url) {
         //   image: $(`#${e} .foxshot-container img`).attr('src')
     };
 
-    dataArr = [...nodes];
 });
 
-//   dataArr = [...objectNodes];
+  dataArr = [...nodes];
 //   dataArr.forEach(e => { e.title = $(e.title).text().trim(); })
     }
   });

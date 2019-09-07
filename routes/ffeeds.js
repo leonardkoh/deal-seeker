@@ -11,32 +11,32 @@ function scrapeFfeeds(url) {
     if(err) { console.log(`There's an error reaching -> ${url}`) }
   
     else {
-        let $ = cheerio.load(html);
-        let objectNodes = []; 
-        
-        let titles = $('.post-title').text();
-        let nodes = titles.split("DEAL:");
-        
-        console.log(`Node Array length: ${nodes.length}`);
-        nodes.forEach(e => {console.log(`${e}`)})
-        
-        
-      nodes.forEach((e,i) => { 
-        objectNodes[i] = {
-            title: e
-        //   submitDetail: $(e.replace('node','h2#title')).next().text(),
-        //   link: e.replace('node',`https://www.ozbargain.com.au/node/`),
-        //   image: $(`#${e} .foxshot-container img`).attr('src')
-    };
+      let $ = cheerio.load(html);
+      let objectNodes = []; 
+      let nodeTitles = $('.post-title').text().split("DEAL:");
+      let nodeInfo = $('.excerpt').text().split('...');
 
-});
+      nodeTitles.shift();
+      nodeInfo.pop();
 
-  dataArr = [...nodes];
-//   dataArr.forEach(e => { e.title = $(e.title).text().trim(); })
+      //debug
+      nodeTitles.forEach((e,i) => {console.log(`${i}: ${e}`)})
+      nodeInfo.forEach((e,i) => {console.log(`${i}: ${e}`)})
+      console.log(`nodeTitles len: ${nodeTitles.length}`);
+      console.log(`nodeInfo len: ${nodeInfo.length}`);
+
+      for(let i=0; i<nodeTitles.length; i++) {
+        objectNodes.push({
+          title: nodeTitles[i],
+          info: nodeInfo[i]
+        })
+      }
+
+    dataArr = [...objectNodes];
     }
+
   });
 }
-
 scrapeFfeeds(URLS[4]);
 
 /* Get Ffeeds page */

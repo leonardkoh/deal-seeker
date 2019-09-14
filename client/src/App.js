@@ -52,42 +52,74 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { data: [] };
+    this.state = { dealSite: '/ozb',
+                    data: [], 
+    };
   }
 
   componentDidMount() {
-    fetch(`/ozb`)
+    fetch(this.state.dealSite)
     .then(res => res.json())
     .then(data => this.setState({ data }));
   }
 
   render() {
-    return (
-    <div className="app">
-      <Headerbar />
-      {/* <h1 className="p-4">Ozbargain</h1> */}
-      <ul>
-        {this.state.data.map((data,i) =>
-            <li key={i} className="p-1">
-              <div className="row">
-                <div className="col-xs mx-auto">
-                  <img src={data.image} alt="deal-node" height="100vw" width="150vw"/>
+    switch (this.state.dealSite) {
+    case '/ozb':  
+      return (
+      <div className="app">
+        <Headerbar />
+        <h1 className="p-4">Oz Bargain</h1>
+        <ul>
+          {this.state.data.map((data,i) =>
+              <li key={i} className="p-1">
+                <div className="row">
+                  <div className="col-xs mx-auto">
+                    <img src={data.image} alt="deal-node" height="100vw" width="150vw"/>
+                  </div>
+                  <div className="col">
+                    {/* <h3><a rel="nofollow" href={data.link.replace('node','goto')}>{data.title}</a></h3> */}
+                    <h3><a rel="nofollow" target="_blank" href={data.link}>{data.title}</a></h3>
+                    <h6>{data.submitDetail}</h6>
+                    <ReactDetailsButton LinkInfo={data.link}/>
+                  </div>
                 </div>
-                <div className="col">
-                  {/* <h3><a rel="nofollow" href={data.link.replace('node','goto')}>{data.title}</a></h3> */}
-                  <h3><a rel="nofollow" target="_blank" href={data.link}>{data.title}</a></h3>
-                  <h6>{data.submitDetail}</h6>
-                  <ReactDetailsButton LinkInfo={data.link}/>
-                </div>
-              </div>
-            <br/>
-          </li>
-        )}
-      </ul>
-      <Pagination />
-      <Footerbar />
-    </div>
-  )}
+              <br/>
+            </li>
+          )}
+        </ul>
+        <Pagination />
+        <Footerbar />
+      </div> )
+    case '/ffeeds':
+      return (
+        <div className="app">
+          <Headerbar />
+          <h1 className="p-4">Frugal Feeds</h1>
+          <ul>
+            {this.state.data.map((data,i) =>
+                <li key={i} className="p-1">
+                  <div className="row">
+                    <div className="col-xs mx-auto">
+                      <img src={data.image} alt="deal-node" height="100vw" width="150vw"/>
+                    </div>
+                    <div className="col">
+                      {/* <h3><a rel="nofollow" href={data.link.replace('node','goto')}>{data.title}</a></h3> */}
+                      <h3><a rel="nofollow" target="_blank" href={data.link}>{data.title}</a></h3>
+                      <h6>{data.submitDetail}</h6>
+                      <ReactDetailsButton LinkInfo={data.link}/>
+                    </div>
+                  </div>
+                <br/>
+              </li>
+            )}
+          </ul>
+          <Pagination />
+          <Footerbar />
+        </div>
+      )
+      default:
+      return ( <div></div> );
+}}
 }
-
-export default App;
+export default App; 

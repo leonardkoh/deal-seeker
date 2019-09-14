@@ -1,6 +1,6 @@
 yarn start Run server first in path ./ <br>
-Then yarn start from client directory in ./client
-Will do scripts
+Then yarn start from client directory in ./client <br>
+Run scripts to be written
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

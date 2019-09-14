@@ -28,7 +28,7 @@ function scrapeFfeeds(url) {
 
   });
 }
-// scrapeFfeeds([URLS[3],URLS[4],URLS[5]]);
+
 for(let i=3; i<=5; i++)
 { scrapeFfeeds(URLS[i]); }
 

@@ -13,6 +13,7 @@ class ReactDetailsButton extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.renderData = this.renderData.bind(this);
+    this.handleClickSeeLess = this.handleClickSeeLess.bind(this);
   }
   
   handleClick() {
@@ -24,6 +25,11 @@ class ReactDetailsButton extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({ nodeData: data }));
   }
+  
+  handleClickSeeLess() {
+    this.setState({showDetails: false,
+      nodeData: []});
+  }
 
   renderData(coupon) {
     if(coupon===1) {
@@ -32,8 +38,10 @@ class ReactDetailsButton extends React.Component {
     }
 
     return ( <div> {this.state.nodeData.map(e => 
-      this.state.nodeData.indexOf(e) === 0 ? <h3><b>{e}</b></h3> : <p>{e}</p> //apply styling to coupon
-    )} </div> )
+      this.state.nodeData.indexOf(e) === 0 ? <p><b>Coupon: {e}</b></p> : <p>{e}</p> //apply styling to coupon
+    )} 
+    <button className="btn btn-outline-dark btn-sm" onClick={this.handleClickSeeLess}>SEE LESS</button>
+    </div> )
   }
 
   render() {

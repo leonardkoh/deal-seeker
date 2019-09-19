@@ -38,7 +38,7 @@ class ReactDetailsButton extends React.Component {
     }
 
     return ( <div> {this.state.nodeData.map(e => 
-      this.state.nodeData.indexOf(e) === 0 ? <p><b>Coupon: {e}</b></p> : <p>{e}</p> //apply styling to coupon
+      this.state.nodeData.indexOf(e) === 0 ? <p><b>{e}</b></p> : <p>{e}</p> //apply styling to coupon
     )} 
     <button className="btn btn-outline-dark btn-sm" onClick={this.handleClickSeeLess}>SEE LESS</button>
     </div> )
@@ -60,24 +60,36 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { dealSite: '/ozb',
+    this.state = { site: '/ozb',
                     data: [], 
     };
+
+    this.updatePage = this.updatePage.bind(this);
   }
 
   componentDidMount() {
-    fetch(this.state.dealSite)
+    this.loadData(this.state.site);
+  }
+
+  updatePage(e) {
+    this.setState({site: e.target.value});
+    this.loadData(e.target.value);
+  }
+
+  loadData(site) {
+    fetch(site)
     .then(res => res.json())
     .then(data => this.setState({ data }));
   }
 
   render() {
-    switch (this.state.dealSite) {
+    switch (this.state.site) {
     case '/ozb':  
       return (
       <div className="app">
         <Headerbar />
         <h1 className="p-4">Oz Bargain</h1>
+        <button onClick={this.updatePage} value="/ffeeds">Frugal Feeds</button> 
         <ul>
           {this.state.data.map((data,i) =>
               <li key={i} className="p-1">
@@ -86,7 +98,6 @@ class App extends React.Component {
                     <img src={data.image} alt="deal-node" height="100vw" width="150vw"/>
                   </div>
                   <div className="col">
-                    {/* <h3><a rel="nofollow" href={data.link.replace('node','goto')}>{data.title}</a></h3> */}
                     <h3><a rel="nofollow" target="_blank" href={data.link}>{data.title}</a></h3>
                     <h6>{data.submitDetail}</h6>
                     <ReactDetailsButton LinkInfo={data.link}/>
@@ -112,9 +123,8 @@ class App extends React.Component {
                       <img src={data.image} alt="deal-node" height="100vw" width="150vw"/>
                     </div>
                     <div className="col">
-                      {/* <h3><a rel="nofollow" href={data.link.replace('node','goto')}>{data.title}</a></h3> */}
                       <h3><a rel="nofollow" target="_blank" href={data.link}>{data.title}</a></h3>
-                      <h6>{data.submitDetail}</h6>
+                      <p>{data.info}</p>
                       <ReactDetailsButton LinkInfo={data.link}/>
                     </div>
                   </div>

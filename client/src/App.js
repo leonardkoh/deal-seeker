@@ -87,7 +87,7 @@ class App extends React.Component {
     case '/ozb':  
       return (
       <div className="app">
-        <Headerbar />
+        <Headerbar site={this.state.site}/>
         <h1 className="p-4">Oz Bargain</h1>
         <button onClick={this.updatePage} value="/ffeeds">Frugal Feeds</button> 
         <ul>
@@ -113,8 +113,9 @@ class App extends React.Component {
     case '/ffeeds':
       return (
         <div className="app">
-          <Headerbar />
+          <Headerbar site={this.state.site}/>
           <h1 className="p-4">Frugal Feeds</h1>
+          <button onClick={this.updatePage} value="/ozb">OzBargain</button> 
           <ul>
             {this.state.data.map((data,i) =>
                 <li key={i} className="p-1">

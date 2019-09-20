@@ -7,7 +7,10 @@ class Headerbar extends React.Component {
     }
 
     handleClick(e){
+        // console.log(this.props.site)
         console.log(e.target.value);
+        this.props.site(e.target.value);
+        // console.log(this.props.site(e.target.value));
     }
 
     render() {

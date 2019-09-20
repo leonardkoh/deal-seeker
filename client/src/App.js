@@ -65,6 +65,7 @@ class App extends React.Component {
     };
 
     this.updatePage = this.updatePage.bind(this);
+    // this.updateSite = this.updateSite.bind(this);
   }
 
   componentDidMount() {
@@ -72,8 +73,10 @@ class App extends React.Component {
   }
 
   updatePage(e) {
-    this.setState({site: e.target.value});
-    this.loadData(e.target.value);
+    // this.setState({site: e.target.value});
+    // this.loadData(e.target.value);
+    this.setState({site: e});
+    this.loadData(e);
   }
 
   loadData(site) {
@@ -87,7 +90,7 @@ class App extends React.Component {
     case '/ozb':  
       return (
       <div className="app">
-        <Headerbar site={this.state.site}/>
+        <Headerbar site={this.updatePage}/>
         <h1 className="p-4">Oz Bargain</h1>
         <button onClick={this.updatePage} value="/ffeeds">Frugal Feeds</button> 
         <ul>
@@ -113,7 +116,7 @@ class App extends React.Component {
     case '/ffeeds':
       return (
         <div className="app">
-          <Headerbar site={this.state.site}/>
+          <Headerbar site={this.updatePage}/>
           <h1 className="p-4">Frugal Feeds</h1>
           <button onClick={this.updatePage} value="/ozb">OzBargain</button> 
           <ul>

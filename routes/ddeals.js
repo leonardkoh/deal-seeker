@@ -41,10 +41,10 @@ function scrapeFfeeds(url) {
   });
 }
 
-for(let i=3; i<=5; i++)
+for(let i=6; i<=8; i++)
 { scrapeFfeeds(URLS[i]); }
 
-/* Get Ffeeds page */
+/* Get Ddeals page */
 router.get('/', function(req, res, next) {
   res.send(dataArr);
 });

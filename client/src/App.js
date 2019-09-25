@@ -92,7 +92,6 @@ class App extends React.Component {
       <div className="app">
         <Headerbar site={this.updatePage}/>
         <h1 className="p-4">Oz Bargain</h1>
-        <button onClick={this.updatePage} value="/ffeeds">Frugal Feeds</button> 
         <ul>
           {this.state.data.map((data,i) =>
               <li key={i} className="p-1">
@@ -118,7 +117,6 @@ class App extends React.Component {
         <div className="app">
           <Headerbar site={this.updatePage}/>
           <h1 className="p-4">Frugal Feeds</h1>
-          <button onClick={this.updatePage} value="/ozb">OzBargain</button> 
           <ul>
             {this.state.data.map((data,i) =>
                 <li key={i} className="p-1">

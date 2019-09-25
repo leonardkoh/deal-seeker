@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var ozbRouter = require('./routes/ozb');
 var ozbNodeRouter = require('./routes/ozbnode');
 var ffeeds = require('./routes/ffeeds');
+var ddeals = require('./routes/ddeals');
 
 var app = express();
 
@@ -25,7 +26,7 @@ app.use('/', indexRouter);
 app.use('/ozb', ozbRouter);
 app.use('/ozbnode', ozbNodeRouter);
 app.use('/ffeeds', ffeeds);
-
+app.use('/ddeals', ddeals);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

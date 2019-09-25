@@ -6,33 +6,22 @@ var URLS = require('../urls');
 
 let dataArr = []; 
 
-function scrapeFfeeds(url) {
+function scrapeDdeals(url) {
   request.get(url, (err, r, html) => {
     if(err) { console.log(`There's an error reaching -> ${url}`) }
   
     else {
       let $ = cheerio.load(html);
-      let nodeTitles = $('.post-title').text().split(/DEAL:|NEWS:/);
+      let nodeTitle = [], nodeLink = [];
       let nodeInfo = $('.excerpt').text().split('...');
-      let nodeLink = [];
-      let nodeImage = [];
+      $('.post-title a').map((i,e) => { nodeTitle.push(e.attribs.title)});
       $('.post-title a').map((i,e) => { nodeLink.push(e.attribs.href)}); 
-      $('.wp-post-image').map((i,e) => { nodeImage.push(e.attribs.src)}); 
-      //attachment-thumb-medium size-thumb-medium wp-post-image tc-smart-load-skip tc-smart-loaded
 
-      console.log($('#post-66130 > div > div.post-thumbnail > a > img').text());
-      // console.log(nodeImage)
-      // let nodeImage = [];
-      // $('.post-thumbnail a').map((i,e) => { nodeImage.push(e.attribs.src)
-      // console.log(e.attribs.src)
-      // }); 
-
-      nodeTitles.shift();
       nodeInfo.pop();
 
-      for(let i=0; i<nodeTitles.length; i++) {
+      for(let i=0; i<nodeLink.length; i++) {
         dataArr.push({
-          title: nodeTitles[i],
+          title: nodeTitle[i].slice(13),
           info: nodeInfo[i],
           link: nodeLink[i]
         })
@@ -42,7 +31,7 @@ function scrapeFfeeds(url) {
 }
 
 for(let i=6; i<=8; i++)
-{ scrapeFfeeds(URLS[i]); }
+{ scrapeDdeals(URLS[i]); }
 
 /* Get Ddeals page */
 router.get('/', function(req, res, next) {

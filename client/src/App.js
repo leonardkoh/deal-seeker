@@ -65,7 +65,6 @@ class App extends React.Component {
     };
 
     this.updatePage = this.updatePage.bind(this);
-    // this.updateSite = this.updateSite.bind(this);
   }
 
   componentDidMount() {
@@ -73,8 +72,6 @@ class App extends React.Component {
   }
 
   updatePage(e) {
-    // this.setState({site: e.target.value});
-    // this.loadData(e.target.value);
     this.setState({site: e});
     this.loadData(e);
   }
@@ -117,6 +114,33 @@ class App extends React.Component {
         <div className="app">
           <Headerbar site={this.updatePage}/>
           <h1 className="p-4">Frugal Feeds</h1>
+          <ul>
+            {this.state.data.map((data,i) =>
+                <li key={i} className="p-1">
+                  <div className="row">
+                    <div className="col-xs mx-auto">
+                      <img src={data.image} alt="deal-node" height="100vw" width="150vw"/>
+                    </div>
+                    <div className="col">
+                      <h3><a rel="nofollow" target="_blank" href={data.link}>{data.title}</a></h3>
+                      <p>{data.info}</p>
+                      <ReactDetailsButton LinkInfo={data.link}/>
+                    </div>
+                  </div>
+                <br/>
+              </li>
+            )}
+          </ul>
+          <Pagination />
+          <Footerbar />
+        </div>
+      )
+      // to refactor with ffeeds
+      case '/ddeals':
+      return (
+        <div className="app">
+          <Headerbar site={this.updatePage}/>
+          <h1 className="p-4">Decent Deals</h1>
           <ul>
             {this.state.data.map((data,i) =>
                 <li key={i} className="p-1">

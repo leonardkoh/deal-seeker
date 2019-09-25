@@ -12,7 +12,7 @@ function scrapeFfeeds(url) {
   
     else {
       let $ = cheerio.load(html);
-      let nodeTitles = $('.post-title').text().split(/DEAL:|NEWS:/);
+      let nodeTitle = $('.post-title').text().split(/DEAL:|NEWS:/);
       let nodeInfo = $('.excerpt').text().split('...');
       let nodeLink = [];
       let nodeImage = [];
@@ -27,12 +27,12 @@ function scrapeFfeeds(url) {
       // console.log(e.attribs.src)
       // }); 
 
-      nodeTitles.shift();
+      nodeTitle.shift();
       nodeInfo.pop();
 
-      for(let i=0; i<nodeTitles.length; i++) {
+      for(let i=0; i<nodeTitle.length; i++) {
         dataArr.push({
-          title: nodeTitles[i],
+          title: nodeTitle[i],
           info: nodeInfo[i],
           link: nodeLink[i]
         })

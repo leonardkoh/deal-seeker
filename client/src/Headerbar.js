@@ -17,22 +17,6 @@ class Headerbar extends React.Component {
             <nav className="navbar navbar-expand-md navbar-dark bg-primary">
                 <a className="navbar-brand">Deal Seeker</a> 
 
-                {/* <div classame="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <option className="nav-link" onClick={this.handleClick} value="/ozb">Oz Bargain</option>
-                        </li>
-                        <li className="nav-item">
-                            <option className="nav-link" onClick={this.handleClick} value="/ffeeds">Frugal Feeds</option>
-                        </li>
-                        <li className="nav-item">
-                            <option className="nav-link" onClick={this.handleClick} value="/">Link 2</option>
-                        </li>
-                        <li className="nav-item">
-                            <option className="nav-link" onClick={this.handleClick} value="/">Link 3</option>
-                        </li>
-                    </ul>
-                </div> */}
                 <div classame="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         {
@@ -47,7 +31,7 @@ class Headerbar extends React.Component {
                             <option className="nav-link" onClick={this.handleClick} value="/ffeeds">Frugal Feeds</option>
                         </li>
                         <li className="nav-item">
-                            <option className="nav-link" onClick={this.handleClick} value="/">Link 2</option>
+                            <option className="nav-link" onClick={this.handleClick} value="/ddeals">Decent Deals</option>
                         </li>
                         <li className="nav-item">
                             <option className="nav-link" onClick={this.handleClick} value="/">Link 3</option>

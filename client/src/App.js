@@ -83,8 +83,7 @@ class App extends React.Component {
   }
 
   render() {
-    switch (this.state.site) {
-    case '/ozb':  
+    if(this.state.site === '/ozb') {
       return (
       <div className="app">
         <Headerbar site={this.updatePage}/>
@@ -108,12 +107,12 @@ class App extends React.Component {
         </ul>
         <Pagination />
         <Footerbar />
-      </div> )
-    case '/ffeeds':
+      </div> )}
+    else if (this.state.site === '/ffeeds' || 'ddeals') {
       return (
         <div className="app">
           <Headerbar site={this.updatePage}/>
-          <h1 className="p-4">Frugal Feeds</h1>
+          {this.state.site === '/ffeeds' ? <h1 className="p-4">Frugal Feeds</h1> : <h1 className="p-4">Decent Deals</h1>}
           <ul>
             {this.state.data.map((data,i) =>
                 <li key={i} className="p-1">
@@ -134,36 +133,9 @@ class App extends React.Component {
           <Pagination />
           <Footerbar />
         </div>
-      )
-      // to refactor with ffeeds
-      case '/ddeals':
-      return (
-        <div className="app">
-          <Headerbar site={this.updatePage}/>
-          <h1 className="p-4">Decent Deals</h1>
-          <ul>
-            {this.state.data.map((data,i) =>
-                <li key={i} className="p-1">
-                  <div className="row">
-                    <div className="col-xs mx-auto">
-                      <img src={data.image} alt="deal-node" height="100vw" width="150vw"/>
-                    </div>
-                    <div className="col">
-                      <h3><a rel="nofollow" target="_blank" href={data.link}>{data.title}</a></h3>
-                      <p>{data.info}</p>
-                      <ReactDetailsButton LinkInfo={data.link}/>
-                    </div>
-                  </div>
-                <br/>
-              </li>
-            )}
-          </ul>
-          <Pagination />
-          <Footerbar />
-        </div>
-      )
-      default:
-      return ( <div></div> );
-}}
+      )}
+      else
+        return ( <div></div> );
+}
 }
 export default App; 

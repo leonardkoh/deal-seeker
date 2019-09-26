@@ -12,8 +12,11 @@ class Headerbar extends React.Component {
     }
 
     render() {
+        // todo: handle active link
+        let activeLink = "nav-link active";
+
         return (
-            // re-style if mobile > drop down 
+            // todo: re-style for mobile > drop down 
             <nav className="navbar navbar-expand-md navbar-dark bg-primary">
                 <a className="navbar-brand">Deal Seeker</a> 
 
@@ -21,11 +24,11 @@ class Headerbar extends React.Component {
                     <ul className="navbar-nav mr-auto">
                         {
                             
-                        // use loop for option elements, make active element based on parent value
+                        // todo: refactor as loop for option elements, implement active value
                             
                         }
-                        <li className="nav-item active">
-                            <option className="nav-link" onClick={this.handleClick} value="/ozb">Oz Bargain</option>
+                        <li className="nav-item">
+                            <option className={activeLink} onClick={this.handleClick} value="/ozb">Oz Bargain</option>
                         </li>
                         <li className="nav-item">
                             <option className="nav-link" onClick={this.handleClick} value="/ffeeds">Frugal Feeds</option>

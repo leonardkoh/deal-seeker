@@ -32,9 +32,10 @@ class ReactDetailsButton extends React.Component {
   }
 
   renderData(coupon) {
-    if(coupon===1) {
-      // let arr2 = [...this.state.nodeData];
-      // this.setState({nodeData: arr2})
+    if(coupon && this.state.nodeData[0].length > 0) {
+      
+      console.log('HAS COUPON')
+      // mod this.state.nodeData[2] to remove coupon
     }
 
     return ( <div> {this.state.nodeData.map(e => 
@@ -45,11 +46,11 @@ class ReactDetailsButton extends React.Component {
   }
 
   render() {
-    if(this.state.showDetails && this.state.nodeData[0]!=='') //if has coupon code
-      return (this.renderData(1));
+    if(this.state.showDetails && this.state.nodeData[0]!=='' && this.state.nodeData[0]!==undefined) // has coupon
+      return (this.renderData(true));
 
     else if(this.state.showDetails) //if no coupon
-      return (this.renderData(0));
+      return (this.renderData(false));
     
     else
       return (<button className="btn btn-outline-dark btn-sm" onClick={this.handleClick}>SEE MORE</button>);
@@ -123,7 +124,7 @@ class App extends React.Component {
                     <div className="col">
                       <h3><a rel="nofollow" target="_blank" href={data.link}>{data.title}</a></h3>
                       <p>{data.info}</p>
-                      <ReactDetailsButton LinkInfo={data.link}/>
+                      {/* <ReactDetailsButton LinkInfo={data.link}/> */}
                     </div>
                   </div>
                 <br/>

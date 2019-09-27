@@ -14,19 +14,20 @@ function scrapeFfeeds(url) {
       let $ = cheerio.load(html);
       let nodeTitle = $('.post-title').text().split(/DEAL:|NEWS:/);
       let nodeInfo = $('.excerpt').text().split('...');
-      let nodeLink = [];
-      let nodeImage = [];
-      $('.post-title a').map((i,e) => { nodeLink.push(e.attribs.href)}); 
-      $('.wp-post-image').map((i,e) => { nodeImage.push(e.attribs.src)}); 
+      let nodeDate = [], nodeLink = [], nodeImage = [];
+      $('.post-title > a').map((i,e) => { nodeLink.push($(e).attr('href')) }); 
+      $('p.post-date > time').map((i,e) => { nodeDate.push($(e).attr('datetime')) }); 
+      $('img').map((i,e) => { nodeImage.push(e.attribs.src)}); 
+
+      $('.post-thumbnail > a > img').map((i,e) => { console.log($(e).attr('src')) });
+      console.log(nodeImage)
+      
       //attachment-thumb-medium size-thumb-medium wp-post-image tc-smart-load-skip tc-smart-loaded
-
-      console.log($('#post-66130 > div > div.post-thumbnail > a > img').text());
-      // console.log(nodeImage)
-      // let nodeImage = [];
-      // $('.post-thumbnail a').map((i,e) => { nodeImage.push(e.attribs.src)
-      // console.log(e.attribs.src)
-      // }); 
-
+      // nodeImage = nodeImage.filter((e,i) => {
+        // return e.includes('data:image/gif;base64');
+        // console.log(i);
+        // return i>=10 ? true:false;
+      
       nodeTitle.shift();
       nodeInfo.pop();
 
@@ -34,7 +35,9 @@ function scrapeFfeeds(url) {
         dataArr.push({
           title: nodeTitle[i],
           info: nodeInfo[i],
-          link: nodeLink[i]
+          date: nodeDate[i],
+          link: nodeLink[i],
+          // image: nodeImage[i]
         })
       }
     }
@@ -43,6 +46,8 @@ function scrapeFfeeds(url) {
 
 for(let i=3; i<=5; i++)
 { scrapeFfeeds(URLS[i]); }
+
+// do sort on data date
 
 /* Get Ffeeds page */
 router.get('/', function(req, res, next) {

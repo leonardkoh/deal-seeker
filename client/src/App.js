@@ -7,7 +7,7 @@ class ReactDetailsButton extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showDetails: false,
+    this.state = {showDetails: false,
       nodeData: []
     };
 
@@ -35,7 +35,7 @@ class ReactDetailsButton extends React.Component {
     if(coupon && this.state.nodeData[0].length > 0) {
       
       console.log('HAS COUPON')
-      // mod this.state.nodeData[2] to remove coupon
+      // todo: substring this.state.nodeData[2] to remove coupon
     }
 
     return ( <div> {this.state.nodeData.map(e => 
@@ -123,6 +123,7 @@ class App extends React.Component {
                     </div>
                     <div className="col">
                       <h3><a rel="nofollow" target="_blank" href={data.link}>{data.title}</a></h3>
+                      <h6>{data.date}</h6>
                       <p>{data.info}</p>
                       {/* <ReactDetailsButton LinkInfo={data.link}/> */}
                     </div>

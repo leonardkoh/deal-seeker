@@ -19,8 +19,8 @@ function scrapeFfeeds(url) {
       $('p.post-date > time').map((i,e) => { nodeDate.push($(e).attr('datetime')) }); 
       $('img').map((i,e) => { nodeImage.push(e.attribs.src)}); 
 
-      $('.post-thumbnail > a > img').map((i,e) => { console.log($(e).attr('src')) });
-      console.log(nodeImage)
+      // $('.post-thumbnail > a > img').map((i,e) => { console.log($(e).attr('src')) });
+      // console.log(nodeImage)
       
       //attachment-thumb-medium size-thumb-medium wp-post-image tc-smart-load-skip tc-smart-loaded
       // nodeImage = nodeImage.filter((e,i) => {

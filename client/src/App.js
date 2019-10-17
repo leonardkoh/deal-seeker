@@ -132,7 +132,6 @@ class App extends React.Component {
               </li>
             )}
           </ul>
-          <Pagination />
           <Footerbar />
         </div>
       )}
